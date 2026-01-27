@@ -1,0 +1,65 @@
+﻿namespace DF.GlobalPlanetaryDefense
+{
+    using Eco.Core.Items;
+    using Eco.Gameplay.Components;
+    using Eco.Gameplay.Items;
+    using Eco.Gameplay.Items.Recipes;
+    using Eco.Gameplay.Skills;
+    using Eco.Mods.TechTree;
+    using Eco.Shared.Localization;
+    using Eco.Shared.Serialization;
+    using System;
+    using System.Collections.Generic;
+
+    [LocDisplayName("Bone Meal"), LocDescription("Ground down bones, can be used for all kinds of purposes.")]
+    [Serialized, MaxStackSize(50), Weight(100)]
+    [Ecopedia("Items", "Products", createAsSubPage: true)]
+    public partial class BoneMealItem : Item { }
+
+    [RequiresSkill(typeof(MillingSkill), 4)]
+    public partial class BoneMealRecipe : RecipeFamily
+    {
+        // Easy to find constants
+        private static Type RequiredSkill => typeof(MillingSkill);
+        private static Type ResourceTalent => typeof(MillingLavishResourcesTalent);
+        private static Type FocusedTalent => typeof(MillingFocusedSpeedTalent);
+        private static Type ParallelTalent => typeof(MillingParallelSpeedTalent);
+        private static Type CraftingStation => typeof(MillObject);
+
+        public BoneMealRecipe()
+        {
+            var recipe = new Recipe();
+            recipe.Init(
+                name: "BoneMeal",
+                displayName: Localizer.DoStr("Bone Meal"),
+
+                ingredients: new List<IngredientElement>
+                {
+                    new IngredientElement(typeof(BoneItem), 12, RequiredSkill, ResourceTalent)
+                },
+
+                items: new List<CraftingElement>
+                {
+                    new CraftingElement<BoneMealItem>(5)
+                }
+            );
+            this.Recipes = new List<Recipe> { recipe };
+
+            this.ExperienceOnCraft = 1;
+            this.LaborInCalories = CreateLaborInCaloriesValue(250, RequiredSkill);
+            this.CraftMinutes = CreateCraftTimeValue(beneficiary: this.GetType(), start: 1.2f, skillType: RequiredSkill, FocusedTalent, ParallelTalent);
+
+            this.ModsPreInitialize();
+            this.Initialize(displayText: recipe.DisplayName, recipeType: this.GetType());
+            this.ModsPostInitialize();
+
+            CraftingComponent.AddRecipe(tableType: CraftingStation, recipeFamily: this);
+        }
+
+        /// <summary>Hook for mods to customize RecipeFamily before initialization. You can change recipes, xp, labor, time here.</summary>
+        partial void ModsPreInitialize();
+
+        /// <summary>Hook for mods to customize RecipeFamily after initialization, but before registration. You can change skill requirements here.</summary>
+        partial void ModsPostInitialize();
+    }
+}
