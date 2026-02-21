@@ -15,7 +15,10 @@
     [Tag("Alkaline"), Tag("Flux")]
     [Serialized, MaxStackSize(50), Weight(100)]
     [Ecopedia("Items", "Products", createAsSubPage: true)]
-    public partial class SodaAshItem : Item { }
+    public partial class SodaAshItem : Item
+    {
+        public override LocString DisplayNamePlural => Localizer.DoStr("Soda Ash");
+    }
 
     [RequiresSkill(typeof(AdvancedSmeltingSkill), 5)]
     public partial class SodaAshRecipe : RecipeFamily

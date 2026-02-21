@@ -13,9 +13,12 @@
 
     [LocDisplayName("Bone Ash"), LocDescription("Ash made of bones, useful as a source of calcium and phosphor in chemical processes.")]
     [Tag("Flux")]
-    [Serialized, MaxStackSize(50), Weight(100)]
+    [Serialized, MaxStackSize(100), Weight(100)]
     [Ecopedia("Items", "Products", createAsSubPage: true)]
-    public partial class BoneAshItem : Item { }
+    public partial class BoneAshItem : Item
+    {
+        public override LocString DisplayNamePlural => Localizer.DoStr("Bone Ash");
+    }
 
     [RequiresSkill(typeof(BakingSkill), 5)]
     public partial class BoneAshRecipe : RecipeFamily
@@ -48,8 +51,8 @@
             this.Recipes = new List<Recipe> { recipe };
 
             this.ExperienceOnCraft = 1;
-            this.LaborInCalories = CreateLaborInCaloriesValue(250, RequiredSkill);
-            this.CraftMinutes = CreateCraftTimeValue(beneficiary: this.GetType(), start: 1.2f, skillType: RequiredSkill, FocusedTalent, ParallelTalent);
+            this.LaborInCalories = CreateLaborInCaloriesValue(15, RequiredSkill);
+            this.CraftMinutes = CreateCraftTimeValue(beneficiary: this.GetType(), start: 0.5f, skillType: RequiredSkill, FocusedTalent, ParallelTalent);
 
             this.ModsPreInitialize();
             this.Initialize(displayText: recipe.DisplayName, recipeType: this.GetType());

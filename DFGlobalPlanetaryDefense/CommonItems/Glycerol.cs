@@ -15,9 +15,12 @@
     [Tag("Plasticizer")]
     [Serialized, MaxStackSize(50), Weight(100)]
     [Ecopedia("Items", "Products", createAsSubPage: true)]
-    public partial class GlycerolItem : Item { }
+    public partial class GlycerolItem : Item
+    {
+        public override LocString DisplayNamePlural => Localizer.DoStr("Glycerol");
+    }
 
-    [RequiresSkill(typeof(CuttingEdgeCookingSkill), 5)]
+    [RequiresSkill(typeof(CuttingEdgeCookingSkill), 1)]
     public partial class GlycerolTallowRecipe : RecipeFamily
     {
         // Easy to find constants
@@ -64,7 +67,7 @@
         partial void ModsPostInitialize();
     }
 
-    [RequiresSkill(typeof(CuttingEdgeCookingSkill), 5)]
+    [RequiresSkill(typeof(CuttingEdgeCookingSkill), 1)]
     public partial class GlycerolBeansRecipe : RecipeFamily
     {
         // Easy to find constants
@@ -111,7 +114,7 @@
         partial void ModsPostInitialize();
     }
 
-    [RequiresSkill(typeof(CuttingEdgeCookingSkill), 5)]
+    [RequiresSkill(typeof(CuttingEdgeCookingSkill), 1)]
     public partial class GlycerolPalmRecipe : RecipeFamily
     {
         // Easy to find constants

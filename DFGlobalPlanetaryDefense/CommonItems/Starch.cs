@@ -12,9 +12,12 @@
     using System.Collections.Generic;
 
     [LocDisplayName("Starch"), LocDescription("Ground down grains, with the starch extracted.")]
-    [Serialized, MaxStackSize(50), Weight(100)]
+    [Serialized, MaxStackSize(100), Weight(100)]
     [Ecopedia("Items", "Products", createAsSubPage: true)]
-    public partial class StarchItem : Item { }
+    public partial class StarchItem : Item
+    {
+        public override LocString DisplayNamePlural => Localizer.DoStr("Starch");
+    }
 
     [RequiresSkill(typeof(CookingSkill), 5)]
     public partial class StarchRecipe : RecipeFamily

@@ -12,9 +12,12 @@
     using System.Collections.Generic;
 
     [LocDisplayName("Bone Meal"), LocDescription("Ground down bones, can be used for all kinds of purposes.")]
-    [Serialized, MaxStackSize(50), Weight(100)]
+    [Serialized, MaxStackSize(100), Weight(100)]
     [Ecopedia("Items", "Products", createAsSubPage: true)]
-    public partial class BoneMealItem : Item { }
+    public partial class BoneMealItem : Item
+    {
+        public override LocString DisplayNamePlural => Localizer.DoStr("Bone Meal");
+    }
 
     [RequiresSkill(typeof(MillingSkill), 4)]
     public partial class BoneMealRecipe : RecipeFamily
@@ -45,8 +48,8 @@
             );
             this.Recipes = new List<Recipe> { recipe };
 
-            this.ExperienceOnCraft = 1;
-            this.LaborInCalories = CreateLaborInCaloriesValue(250, RequiredSkill);
+            this.ExperienceOnCraft = 0.5f;
+            this.LaborInCalories = CreateLaborInCaloriesValue(15, RequiredSkill);
             this.CraftMinutes = CreateCraftTimeValue(beneficiary: this.GetType(), start: 1.2f, skillType: RequiredSkill, FocusedTalent, ParallelTalent);
 
             this.ModsPreInitialize();
