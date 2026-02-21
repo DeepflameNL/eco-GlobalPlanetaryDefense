@@ -8,38 +8,40 @@
     using System;
     using System.Collections.Generic;
 
-    [RequiresSkill(typeof(CampfireCookingSkill), 1)]
-    public partial class TallowBonesRecipe : RecipeFamily
+    [RequiresSkill(typeof(MasonrySkill), 4)]
+    public partial class CementBoneAshRecipe : RecipeFamily
     {
         // Easy to find constants
-        private static Type RequiredSkill => typeof(CampfireCookingSkill);
-        private static Type ResourceTalent => typeof(CampfireCookingLavishResourcesTalent);
-        private static Type FocusedTalent => typeof(CampfireCookingFocusedSpeedTalent);
-        private static Type ParallelTalent => typeof(CampfireCookingParallelSpeedTalent);
-        private static Type CraftingStation => typeof(KilnObject);
+        private static Type RequiredSkill => typeof(MasonrySkill);
+        private static Type ResourceTalent => typeof(MasonryLavishResourcesTalent);
+        private static Type FocusedTalent => typeof(MasonryFocusedSpeedTalent);
+        private static Type ParallelTalent => typeof(MasonryParallelSpeedTalent);
+        private static Type CraftingStation => typeof(CementKilnObject);
 
-        public TallowBonesRecipe()
+        public CementBoneAshRecipe()
         {
             var recipe = new Recipe();
             recipe.Init(
-                name: "ExtractMarrow",
-                displayName: Localizer.DoStr("Extract Marrow"),
+                name: "CementBoneAsh",
+                displayName: Localizer.DoStr("Cement (Bone Ash)"),
 
                 ingredients: new List<IngredientElement>
                 {
-                    new IngredientElement(typeof(BoneItem), 10, RequiredSkill, ResourceTalent)
+                    new IngredientElement(typeof(BoneAshItem), 1, RequiredSkill, ResourceTalent),
+                    new IngredientElement(typeof(SandItem), 1, RequiredSkill, ResourceTalent),
+                    new IngredientElement(typeof(CharcoalPowderItem), 4, RequiredSkill, ResourceTalent)
                 },
 
                 items: new List<CraftingElement>
                 {
-                    new CraftingElement<TallowItem>(1)
+                    new CraftingElement<CementItem>(2)
                 }
             );
             this.Recipes = new List<Recipe> { recipe };
 
-            this.ExperienceOnCraft = 0.5f;
-            this.LaborInCalories = CreateLaborInCaloriesValue(20, RequiredSkill);
-            this.CraftMinutes = CreateCraftTimeValue(beneficiary: this.GetType(), start: 0.8f, skillType: RequiredSkill, FocusedTalent, ParallelTalent);
+            this.ExperienceOnCraft = 1;
+            this.LaborInCalories = CreateLaborInCaloriesValue(70, RequiredSkill);
+            this.CraftMinutes = CreateCraftTimeValue(beneficiary: this.GetType(), start: 1.6f, skillType: RequiredSkill, FocusedTalent, ParallelTalent);
 
             this.ModsPreInitialize();
             this.Initialize(displayText: recipe.DisplayName, recipeType: this.GetType());

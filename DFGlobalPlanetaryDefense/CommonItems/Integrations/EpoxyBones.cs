@@ -22,7 +22,7 @@
         {
             var recipe = new Recipe();
             recipe.Init(
-                name: "Bio-Glue",
+                name: "BioGlue",
                 displayName: Localizer.DoStr("Bio-Glue"),
 
                 ingredients: new List<IngredientElement>
