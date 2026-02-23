@@ -7,12 +7,12 @@ namespace Eco.Mods.TechTree
     {
         partial void ModsPreInitialize()
         {
-            this.DefaultRecipe.Ingredients.Clear();
-            this.DefaultRecipe.Ingredients.Add(new IngredientElement(typeof(CentralProcessingCoreItem), 1, true));
-            this.DefaultRecipe.Ingredients.Add(new IngredientElement(typeof(MagneticTapeArrayItem), 1, true));
-            this.DefaultRecipe.Ingredients.Add(new IngredientElement(typeof(RadarTransceiverItem), 1, true));
-            this.DefaultRecipe.Ingredients.Add(new IngredientElement(typeof(HighPerformancePowerRackItem), 1, true));
-            this.DefaultRecipe.Ingredients.Add(new IngredientElement(typeof(CoolantCirculationSystemItem), 1, true));
+            Recipes[0].Ingredients.Clear();
+            Recipes[0].Ingredients.Add(new IngredientElement(typeof(CentralProcessingCoreItem), 1, true));
+            Recipes[0].Ingredients.Add(new IngredientElement(typeof(MagneticTapeArrayItem), 1, true));
+            Recipes[0].Ingredients.Add(new IngredientElement(typeof(RadarTransceiverItem), 1, true));
+            Recipes[0].Ingredients.Add(new IngredientElement(typeof(HighPerformancePowerRackItem), 1, true));
+            Recipes[0].Ingredients.Add(new IngredientElement(typeof(CoolantCirculationSystemItem), 1, true));
         }
     }
 }
