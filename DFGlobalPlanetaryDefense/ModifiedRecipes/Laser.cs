@@ -3,7 +3,7 @@ using Eco.Gameplay.Items.Recipes;
 
 namespace Eco.Mods.TechTree
 {
-    public partial class LaserRecipe : RecipeFamily
+    /*public partial class LaserRecipe : RecipeFamily
     {
         partial void ModsPreInitialize()
         {
@@ -15,5 +15,5 @@ namespace Eco.Mods.TechTree
             this.DefaultRecipe.Ingredients.Add(new IngredientElement(typeof(CoolantCirculationSystemItem), 1, true));
             this.DefaultRecipe.Ingredients.Add(new IngredientElement(typeof(HighCapacityBatteryItem), 10, true));
         }
-    }
+    }*/
 }

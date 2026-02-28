@@ -3,7 +3,7 @@ using Eco.Gameplay.Items.Recipes;
 
 namespace Eco.Mods.TechTree
 {
-    public partial class ComputerLabRecipe : RecipeFamily
+    /*public partial class ComputerLabRecipe : RecipeFamily
     {
         partial void ModsPreInitialize()
         {
@@ -14,5 +14,5 @@ namespace Eco.Mods.TechTree
             this.DefaultRecipe.Ingredients.Add(new IngredientElement(typeof(HighPerformancePowerRackItem), 1, true));
             this.DefaultRecipe.Ingredients.Add(new IngredientElement(typeof(CoolantCirculationSystemItem), 1, true));
         }
-    }
+    }*/
 }
