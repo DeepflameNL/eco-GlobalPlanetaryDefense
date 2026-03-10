@@ -7,13 +7,13 @@ namespace Eco.Mods.TechTree
     {
         partial void ModsPreInitialize()
         {
-            this.DefaultRecipe.Ingredients.Clear();
-            this.DefaultRecipe.Ingredients.Add(new IngredientElement(typeof(SeismicStabilizationPlatformItem), 1, true));
-            this.DefaultRecipe.Ingredients.Add(new IngredientElement(typeof(LaserBodyItem), 1, true));
-            this.DefaultRecipe.Ingredients.Add(new IngredientElement(typeof(OpticalAssemblyItem), 1, true));
-            this.DefaultRecipe.Ingredients.Add(new IngredientElement(typeof(EMShieldingJacketItem), 1, true));
-            this.DefaultRecipe.Ingredients.Add(new IngredientElement(typeof(CoolantCirculationSystemItem), 1, true));
-            this.DefaultRecipe.Ingredients.Add(new IngredientElement(typeof(HighCapacityBatteryItem), 10, true));
+            this.Recipes[0].Ingredients.Clear();
+            this.Recipes[0].Ingredients.Add(new IngredientElement(typeof(SeismicStabilizationPlatformItem), 1, true));
+            this.Recipes[0].Ingredients.Add(new IngredientElement(typeof(LaserBodyItem), 1, true));
+            this.Recipes[0].Ingredients.Add(new IngredientElement(typeof(OpticalAssemblyItem), 1, true));
+            this.Recipes[0].Ingredients.Add(new IngredientElement(typeof(EMShieldingJacketItem), 1, true));
+            this.Recipes[0].Ingredients.Add(new IngredientElement(typeof(CoolantCirculationSystemItem), 1, true));
+            this.Recipes[0].Ingredients.Add(new IngredientElement(typeof(HighCapacityBatteryItem), 10, true));
         }
     }*/
 }
